@@ -1,13 +1,13 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
-
-// TEMPLATE DATA
-var users []Person
 
 func main() {
 	router := gin.Default()
@@ -22,22 +22,39 @@ func main() {
 
 func createPerson(c *gin.Context) {
 	var u Person
-	// u.Name = "Carlos Amaral"
-	// u.Age = 18
-	// u.Diary = []string{"Mensagem 1"}
-	// users = append(users, u)
-
-	if err := c.Bind(&u); err != nil {
-		return
+	body, error := ioutil.ReadAll(c.Request.Body)
+	if error != nil {
+		fmt.Println(error)
+	} else {
+		c.Request.Body.Close()
 	}
 
+	json.Unmarshal([]byte(body), &u)
 	c.IndentedJSON(http.StatusCreated, u)
 }
 
 func changeAddress(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, "Change address")
+	var a Address
+	body, error := ioutil.ReadAll(c.Request.Body)
+
+	if error != nil {
+		fmt.Println(error)
+	}
+
+	c.Request.Body.Close()
+	json.Unmarshal([]byte(body), &a)
+
 }
 
 func newDiary(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, "New Diary")
+	var d Diary
+	body, error := ioutil.ReadAll(c.Request.Body)
+	
+	if error != nil {
+		fmt.Println(error)
+	}
+	
+	c.Request.Body.Close()
+
+	json.Unmarshal([]byte(body), &d)
 }
