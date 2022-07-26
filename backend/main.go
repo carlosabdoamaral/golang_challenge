@@ -43,18 +43,19 @@ func changeAddress(c *gin.Context) {
 
 	c.Request.Body.Close()
 	json.Unmarshal([]byte(body), &a)
-
+	c.IndentedJSON(http.StatusCreated, a)
 }
 
 func newDiary(c *gin.Context) {
 	var d Diary
 	body, error := ioutil.ReadAll(c.Request.Body)
-	
+
 	if error != nil {
 		fmt.Println(error)
 	}
-	
+
 	c.Request.Body.Close()
 
 	json.Unmarshal([]byte(body), &d)
+	c.IndentedJSON(http.StatusCreated, d)
 }
