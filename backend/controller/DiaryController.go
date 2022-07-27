@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/Carlosabdoamaral/golang-challenge/model"
+	"root/model"
 	"github.com/gin-gonic/gin"
 )
 

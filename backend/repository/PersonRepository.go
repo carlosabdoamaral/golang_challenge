@@ -1,19 +1,28 @@
 package repository
 
 import (
+	"database/sql"
+	"fmt"
 	"log"
 
-	"github.com/Carlosabdoamaral/golang-challenge/model"
-	"github.com/carlosabdoamaral/golang-challenge/model"
+	"root/model"
+
 	_ "github.com/lib/pq"
 )
 
 func SelectAllFromPerson() []model.PersonModel {
 	selectAllFromPersonQuery := "select * from person"
-	rows, err := db.Query(selectAllFromPersonQuery)
-
 	var personList []model.PersonModel
 
+	// TODO: Mudar para uma variavel global chamada db
+	conn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "0.0.0.0", 5051, "postgres", "root", "postgres")
+	db, err := sql.Open("postgres", conn)
+	if err != nil {
+		panic(err)
+		println()
+	}
+
+	rows, err := db.Query(selectAllFromPersonQuery)
 	if err != nil {
 		log.Fatal(err)
 	}

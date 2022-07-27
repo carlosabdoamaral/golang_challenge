@@ -4,8 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/Carlosabdoamaral/golang-challenge/controller"
-	"github.com/Carlosabdoamaral/golang-challenge/repository"
+	"root/controller"
+	"root/repository"
+
 	"github.com/gin-gonic/gin"
 )
 

@@ -1,4 +1,4 @@
-module github.com/Carlosabdoamaral/golang-challenge
+module root
 
 go 1.18
 
