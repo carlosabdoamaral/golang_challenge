@@ -1,21 +1,23 @@
 package main
 
-type Person struct {
-	id    uint   `json:"id"`
-	Name  string `json:"name"`
-	Age   int    `json:"age"`
-	Diary Diary  `json:"diary"`
+type PersonModel struct {
+	id      uint         `json:"id"`
+	Name    string       `json:"name"`
+	Age     int          `json:"age"`
+	Diary   []DiaryModel `json:"diary"`
+	Address AddressModel `json:"address"`
 }
 
-type Diary struct {
-	id      uint   `json:"id"`
-	Message string `json:"message"`
+type DiaryModel struct {
+	id       uint   `json:"id"`
+	idPerson uint   `json:"idPerson"`
+	Message  string `json:"message"`
 }
 
-type Address struct {
-	id           uint `json:"id"`
-	Street       string
-	Neighborhood string
-	City         string
-	idPerson     uint // So pode ser positivo
+type AddressModel struct {
+	id           uint   `json:"id"`
+	Street       string `json:"street"`
+	Neighborhood string `json:"neighborhood"`
+	City         string `json:"City"`
+	idPerson     uint   `json:"idPerson"`
 }
