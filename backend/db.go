@@ -10,7 +10,7 @@ import (
 
 const (
 	selectAllFromPersonQuery = "select * from person"
-	createTablePerson        = "CREATE TABLE person (id INTEGER, username VARCHAR(255)) IF NOT EXISTS"
+	createTablePerson        = "CREATE TABLE person (id INTEGER, username VARCHAR(255), age INTEGER)"
 )
 
 var (
@@ -25,41 +25,40 @@ func ConfigDatabase() {
 	}
 
 	db = database
-	defer db.Close()
 
-	ConfigTables()
+	// db.Query("DROP TABLE IF EXISTS person")
+	db.Query(createTablePerson)
+	// db.Query("INSERT INTO person(id, username, age) VALUES (0, 'Carlos Amaral', 18);")
 	SelectAllFromPerson()
 }
 
-func ConfigTables() {
-	db.Query(createTablePerson)
-	// db.Query("INSERT INTO person(id, username) VALUES(1,'Example')")
-}
-
-func SelectAllFromPerson() {
+func SelectAllFromPerson() []PersonModel {
 	rows, err := db.Query(selectAllFromPersonQuery)
+
+	var personList []PersonModel
+
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	defer rows.Close()
 
-	var persons = {
-		
-	}
-
 	for rows.Next() {
-		var test TestModel
-		if err := rows.Scan(&test.id, &test.username); err != nil {
+		var person PersonModel
+		if err := rows.Scan(&person.Id, &person.Username, &person.Age); err != nil {
 			log.Fatal(err)
 		}
 
-		persons = append(persons, test)
+		personList = append(personList, person)
 	}
 
 	if err := rows.Err(); err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(persons)
-	return persons
+	return personList
+}
+
+func InsertNewPerson(person PersonModel) {
+
 }

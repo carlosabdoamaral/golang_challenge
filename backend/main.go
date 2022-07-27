@@ -5,10 +5,12 @@ import (
 )
 
 func main() {
-	fmt.Println("Starting...")
+	println()
+	fmt.Println("Database...")
 	ConfigDatabase()
 
-	fmt.Println("Starting...")
+	println()
+	fmt.Println("Route...")
 	ConfigRoutes()
 
 	defer db.Close()

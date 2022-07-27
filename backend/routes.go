@@ -21,6 +21,11 @@ func ConfigRoutes() {
 	}
 }
 
+func AllPersons(c *gin.Context) {
+	var personList []PersonModel = SelectAllFromPerson()
+	c.IndentedJSON(http.StatusOK, personList)
+}
+
 func CreatePerson(c *gin.Context) {
 	var u PersonModel
 	body, error := ioutil.ReadAll(c.Request.Body)
@@ -34,10 +39,6 @@ func CreatePerson(c *gin.Context) {
 	json.Unmarshal([]byte(body), &u)
 
 	c.IndentedJSON(http.StatusCreated, u)
-}
-
-func AllPersons(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, SelectAllFromPerson)
 }
 
 func ChangeAddress(c *gin.Context) {
