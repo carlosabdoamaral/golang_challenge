@@ -1,3 +1,4 @@
+github.com/carlosabdoamaral/golang-challenge v0.0.0-20220727181216-fad783447fa1 h1:0ENf3mI9VUD2HIi8pw7yoq88x+qGRwYO46E0vg+8p0E=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
