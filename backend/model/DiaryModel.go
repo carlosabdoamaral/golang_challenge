@@ -1,7 +1,12 @@
 package model
 
+import (
+	"time"
+)
+
 type DiaryModel struct {
-	Id       uint   `json:"id"`
-	IdPerson uint   `json:"idPerson"`
-	Message  string `json:"message"`
+	Id_diary      uint      `json:"id_diary"`
+	Id_person     uint      `json:"id_person"`
+	Message_value string    `json:"message"`
+	Diary_date    time.Time `json:"date"`
 }

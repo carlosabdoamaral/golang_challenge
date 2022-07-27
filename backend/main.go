@@ -37,20 +37,12 @@ func ConfigRoutes() {
 }
 
 func ConfigDatabase() {
-
-	// selectAllFromPersonQuery := "select * from person"
-	createTablePerson := "CREATE TABLE person (id INTEGER, username VARCHAR(255), age INTEGER)"
-
-	conn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "0.0.0.0", 5051, "postgres", "root", "postgres")
+	conn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "0.0.0.0", 5051, "postgres", "root", "golang_challenge")
 	database, err := sql.Open("postgres", conn)
 	if err != nil {
 		panic(err)
 	}
 
 	db = database
-
-	// db.Query("DROP TABLE IF EXISTS person")
-	db.Query(createTablePerson)
-	// db.Query("INSERT INTO person(id, username, age) VALUES (0, 'Carlos Amaral', 18);")
 	repository.SelectAllFromPerson()
 }
