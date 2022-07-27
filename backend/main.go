@@ -11,5 +11,5 @@ func main() {
 	fmt.Println("Starting...")
 	ConfigRoutes()
 
-	// defer db.Close()
+	defer db.Close()
 }

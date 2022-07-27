@@ -9,38 +9,57 @@ import (
 )
 
 const (
-	selectAllFromPerson = "select * from person"
+	selectAllFromPersonQuery = "select * from person"
+	createTablePerson        = "CREATE TABLE person (id INTEGER, username VARCHAR(255)) IF NOT EXISTS"
+)
+
+var (
+	db *sql.DB
 )
 
 func ConfigDatabase() {
 	conn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "0.0.0.0", 5051, "postgres", "root", "postgres")
-	db, err := sql.Open("postgres", conn)
+	database, err := sql.Open("postgres", conn)
 	if err != nil {
 		panic(err)
 	}
 
+	db = database
 	defer db.Close()
 
-	rows, err := db.Query(selectAllFromPerson)
+	ConfigTables()
+	SelectAllFromPerson()
+}
+
+func ConfigTables() {
+	db.Query(createTablePerson)
+	// db.Query("INSERT INTO person(id, username) VALUES(1,'Example')")
+}
+
+func SelectAllFromPerson() {
+	rows, err := db.Query(selectAllFromPersonQuery)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	defer rows.Close()
 
-	for rows.Next() {
-		var username string
-		var id uint
+	var persons = {
+		
+	}
 
-		if err := rows.Scan(&username, &id); err != nil {
+	for rows.Next() {
+		var test TestModel
+		if err := rows.Scan(&test.id, &test.username); err != nil {
 			log.Fatal(err)
 		}
 
-		fmt.Println(username, id)
+		persons = append(persons, test)
 	}
-+
+
 	if err := rows.Err(); err != nil {
 		log.Fatal(err)
 	}
 
+	fmt.Println(persons)
+	return persons
 }

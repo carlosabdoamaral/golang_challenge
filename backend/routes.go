@@ -11,6 +11,7 @@ import (
 
 func ConfigRoutes() {
 	router := gin.Default()
+	router.GET("api/all", AllPersons)
 	router.POST("api/create", CreatePerson)
 	router.PUT("api/address", ChangeAddress)
 	router.POST("api/diary", NewDiary)
@@ -33,6 +34,10 @@ func CreatePerson(c *gin.Context) {
 	json.Unmarshal([]byte(body), &u)
 
 	c.IndentedJSON(http.StatusCreated, u)
+}
+
+func AllPersons(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, SelectAllFromPerson)
 }
 
 func ChangeAddress(c *gin.Context) {

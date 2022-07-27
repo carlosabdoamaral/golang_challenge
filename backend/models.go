@@ -21,3 +21,8 @@ type AddressModel struct {
 	City         string `json:"City"`
 	idPerson     uint   `json:"idPerson"`
 }
+
+type TestModel struct {
+	id       uint   `json:"id"`
+	username string `json:"username"`
+}
