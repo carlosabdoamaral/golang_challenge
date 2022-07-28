@@ -5,6 +5,7 @@ import { ROUTES } from './routes';
 import {BrowserRouter} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./utils/scss/IndexView.scss"
+import "./utils/scss/NewUserView.scss"
 import "./utils/scss/Master.scss"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

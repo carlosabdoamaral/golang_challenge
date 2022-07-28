@@ -1,6 +1,4 @@
-$offcanvas_width : 250px;
-
-.index-view {
+.new-user {
     min-height: 100vh !important;
     min-width: 100vw !important;
     max-width: 100vw !important;
@@ -8,4 +6,8 @@ $offcanvas_width : 250px;
     display: flex;
     flex-direction: column;
     padding: 3em;
+
+    .return-button:hover {
+        cursor: pointer;
+    }
 }
