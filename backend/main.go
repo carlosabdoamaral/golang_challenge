@@ -36,7 +36,7 @@ func ConfigRoutes() {
 }
 
 func ConfigDatabase() {
-	conn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "localhost", 15432, "postgres", "root", "golang_challenge")
+	conn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "localhost", 15432, "postgres", "root", "postgres")
 	database, err := sql.Open("postgres", conn)
 	if err != nil {
 		panic(err)
