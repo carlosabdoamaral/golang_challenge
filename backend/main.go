@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"root/controller"
-	"root/repository"
 
 	"github.com/gin-gonic/gin"
 )
@@ -37,12 +36,31 @@ func ConfigRoutes() {
 }
 
 func ConfigDatabase() {
-	conn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "0.0.0.0", 5051, "postgres", "root", "golang_challenge")
+	conn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "localhost", 15432, "postgres", "root", "golang_challenge")
 	database, err := sql.Open("postgres", conn)
 	if err != nil {
 		panic(err)
 	}
 
 	db = database
-	repository.SelectAllFromPerson()
+
+	fmt.Println("RUNNING QUERYS...")
+
+	mainQuery := `
+		DROP TABLE IF EXISTS person CASCADE;
+		DROP TABLE IF EXISTS address CASCADE;
+		DROP TABLE IF EXISTS diary CASCADE;
+		CREATE TABLE person (id_person SERIAL PRIMARY KEY, username VARCHAR(255) NOT NULL, age INT NOT NULL,cpf VARCHAR(11) NOT NULL, cpf_doc VARCHAR(5) NOT NULL, email VARCHAR(255) NOT NULL, birthdate DATE NOT NULL);
+		CREATE TABLE address (id_address SERIAL PRIMARY KEY,id_person INT UNIQUE NOT NULL REFERENCES person(id_person),street VARCHAR(255) NOT NULL,neighborhood VARCHAR(255) NOT NULL,city VARCHAR(255) NOT NULL,zip VARCHAR(8) NOT NULL,isMain BOOL,nth INT NOT NULL,observation VARCHAR(255));
+		CREATE TABLE diary (id_diary SERIAL PRIMARY KEY,id_person INT NOT NULL REFERENCES person(id_person),message_value VARCHAR(255) NOT NULL,diary_date timestamp);
+	`
+
+	insertQuery := `
+		INSERT INTO person(username, age, cpf, cpf_doc, email, birthdate) VALUES('Template user', 18, '12345678910', '12345', 'user.template@gmail.com', '2004-03-02');
+		INSERT INTO address(id_person, street, neighborhood, city, zip, ismain, nth, observation) VALUES (1, 'Rua', 'Bairro', 'Cidade', 'CEP', true, 1, '');
+		INSERT INTO diary(id_person, message_value, diary_date) VALUES (1, 'Bem vindo! Via postgres', NOW());
+	`
+
+	db.Query(mainQuery)
+	db.QueryRow(insertQuery)
 }

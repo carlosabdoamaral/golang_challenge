@@ -18,7 +18,7 @@ func SelectAllFromPerson() []model.PersonModelDTO {
 	var personList []model.PersonModelDTO
 
 	// TODO: Mudar para uma variavel global chamada db
-	conn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "0.0.0.0", 5051, "postgres", "root", "golang_challenge")
+	conn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "localhost", 15432, "postgres", "root", "golang_challenge")
 	db, err := sql.Open("postgres", conn)
 	if err != nil {
 		panic(err)
