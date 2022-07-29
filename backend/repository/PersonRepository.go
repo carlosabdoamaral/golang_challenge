@@ -80,26 +80,26 @@ func InsertNewPerson(p model.PersonModelDTO) {
 		panic(err)
 	}
 
-	// db.QueryRow(
-	// 	"INSERT INTO person(username, age, cpf, cpf_doc, email, birthdate) VALUES($1, $2, $3, $4, $5, $6) RETURNING id_person;",
-	// 	p.Username, p.Age, p.Cpf, p.Cpf_doc, p.Email, p.Birthdate,
-	// )
-
-	// db.QueryRow(
-	// 	"INSERT INTO address(id_person, street, neighborhood, city, zip, ismain, nth, observation) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);",
-	// 	conn, p.Address.Street, p.Address.Neighborhood, p.Address.City, p.Address.Zip, p.Address.Ismain, p.Address.Nth, p.Address.Observation,
-	// )
-
-	db.Query(
-		`
-		DO $$
-		DECLARE lastid bigint;
-		BEGIN
-			INSERT INTO person(username, age, cpf, cpf_doc, email, birthdate) VALUES($1, $2, $3, $4, $5, $6)
-			RETURNING id_person INTO lastid;
-			INSERT INTO address(id_person, street, neighborhood, city, zip, ismain, nth, observation) VALUES (lastid, $7, $8, $9, $10, $11, $12, $13)
-		END $$;
-		`,
-		p.Username, p.Age, p.Cpf, p.Cpf_doc, p.Email, p.Birthdate, p.Address.Street, p.Address.Neighborhood, p.Address.City, p.Address.Zip, p.Address.Ismain, p.Address.Nth, p.Address.Observation,
+	db.QueryRow(
+		"INSERT INTO person(username, age, cpf, cpf_doc, email, birthdate) VALUES($1, $2, $3, $4, $5, $6) RETURNING id_person;",
+		p.Username, p.Age, p.Cpf, p.Cpf_doc, p.Email, p.Birthdate,
 	)
+
+	db.QueryRow(
+		"INSERT INTO address(id_person, street, neighborhood, city, zip, ismain, nth, observation) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);",
+		1, p.Address.Street, p.Address.Neighborhood, p.Address.City, p.Address.Zip, p.Address.Ismain, p.Address.Nth, p.Address.Observation,
+	)
+
+	// db.Query(
+	// 	`
+	// 	DO $$
+	// 	DECLARE lastid bigint;
+	// 	BEGIN
+	// 		INSERT INTO person(username, age, cpf, cpf_doc, email, birthdate) VALUES($1, $2, $3, $4, $5, $6)
+	// 		RETURNING id_person INTO lastid;
+	// 		INSERT INTO address(id_person, street, neighborhood, city, zip, ismain, nth, observation) VALUES (lastid, $7, $8, $9, $10, $11, $12, $13)
+	// 	END $$;
+	// 	`,
+	// 	p.Username, p.Age, p.Cpf, p.Cpf_doc, p.Email, p.Birthdate, p.Address.Street, p.Address.Neighborhood, p.Address.City, p.Address.Zip, p.Address.Ismain, p.Address.Nth, p.Address.Observation,
+	// )
 }

@@ -36,5 +36,5 @@ func CreatePerson(c *gin.Context) {
 
 	repository.InsertNewPerson(person)
 
-	c.IndentedJSON(http.StatusCreated, person)
+	c.IndentedJSON(http.StatusCreated, http.StatusCreated)
 }

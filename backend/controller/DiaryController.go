@@ -7,6 +7,8 @@ import (
 	"net/http"
 
 	"root/model"
+	"root/repository"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -21,5 +23,11 @@ func NewDiary(c *gin.Context) {
 	c.Request.Body.Close()
 
 	json.Unmarshal([]byte(body), &d)
-	c.IndentedJSON(http.StatusCreated, d)
+	res := repository.InsertNewDiary(d)
+	switch res {
+	case http.StatusOK:
+		c.IndentedJSON(http.StatusCreated, d)
+	default:
+		c.IndentedJSON(http.StatusInternalServerError, http.StatusInternalServerError)
+	}
 }
