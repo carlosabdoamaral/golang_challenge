@@ -1,6 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/carlos.amaral@db1.com.br/Documents/github/personal/golang-challenge'
-protoc --proto_path=proto proto/*.proto --go_out=gen/
-protoc --proto_path=proto proto/*.proto --go-grpc_out=gen/
 make: Leaving directory '/home/carlos.amaral@db1.com.br/Documents/github/personal/golang-challenge'
  
+make: *** No targets specified and no makefile found.  Stop.
+
