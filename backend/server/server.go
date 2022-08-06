@@ -25,6 +25,18 @@ func (s *personServiceServer) CreatePerson(c context.Context, req *pb.PersonMode
 	return res, nil
 }
 
+func (s *personServiceServer) AlterAddress(c context.Context, req *pb.AlterAddressRequest) (*pb.AlterAddressResponse, error) {
+	log.Println("Received AlterAddress request")
+	err := repository.AlterAddress(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return &pb.AlterAddressResponse{
+		Status: "Success!",
+	}, nil
+}
+
 func main() {
 	listener, err := net.Listen("tcp", "localhost:8081")
 	if err != nil {

@@ -13,6 +13,7 @@ func main() {
 	api := router.Group("/api")
 
 	api.POST("/person/new", controller.CreatePerson)
+	api.PUT("/address/alter", controller.AlterAddress)
 
 	err := router.Run()
 	if err != nil {

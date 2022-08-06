@@ -74,3 +74,14 @@ func InsertMessage(id_person int, message string) error {
 
 	return nil
 }
+
+func AlterAddress(alter_address_object *pb.AlterAddressRequest) error {
+	query := fmt.Sprintf(`UPDATE address SET street = '%s', neighborhood = '%s', city = '%s' WHERE id_person = %d;`, alter_address_object.Address.Street, alter_address_object.Address.Neighborhood, alter_address_object.Address.City, alter_address_object.IdPerson)
+	_, err := db.Query(query)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+
+	return nil
+}

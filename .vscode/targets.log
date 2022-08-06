@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Aug  5 15:09:43 2022
+# Make data base, printed on Sat Aug  6 00:41:25 2022
 
 # Variables
 
@@ -51,7 +53,7 @@ GDM_LANG = en
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 9:85005
+JOURNAL_STREAM = 9:60902
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -60,8 +62,8 @@ SNAP_INSTANCE_NAME = code
 SNAP_ARCH = amd64
 # environment
 GVM_ROOT = /home/carlos.amaral@db1.com.br/.gvm
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
+# makefile
+MAKEFILE_LIST := 
 # automatic
 @F = $(notdir $@)
 # environment
@@ -75,7 +77,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/680677324/bus
 # environment
 _ = /snap/code/102/usr/share/code/code
 # environment
-MANAGERPID = 6535
+MANAGERPID = 3706
 # environment
 GVM_PATH_BACKUP = /home/carlos.amaral@db1.com.br/.gvm/bin:/home/carlos.amaral@db1.com.br/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/.local/aws-cli/v2/2.5.6/bin:/home/carlos.amaral@db1.com.br/.local/protoc-gen-go-cli:/home/carlos.amaral@db1.com.br/.local/mkcert-cli:/home/carlos.amaral@db1.com.br/.local/google-cloud-sdk/bin:
 # environment
@@ -89,7 +91,7 @@ XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/102/usr/share/glib-2.0/schemas
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_680677324_TvylWP
+KRB5CCNAME = FILE:/tmp/krb5cc_680677324_Gf0a7s
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -97,7 +99,7 @@ PATH = /home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/
 # environment
 GPG_AGENT_INFO = /run/user/680677324/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/MGA10456.db1.com.br:@/tmp/.ICE-unix/6736,unix/MGA10456.db1.com.br:/tmp/.ICE-unix/6736
+SESSION_MANAGER = local/MGA10456.db1.com.br:@/tmp/.ICE-unix/3903,unix/MGA10456.db1.com.br:/tmp/.ICE-unix/3903
 # environment
 XDG_RUNTIME_DIR = /run/user/680677324
 # environment
@@ -117,7 +119,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 09226612e8ad4e72ba529c56812afdf6
+INVOCATION_ID = fa093e13939d49c9bff8207f7d77cbc5
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/102/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -131,7 +133,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/680677324/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 1148478
+GIO_LAUNCHED_DESKTOP_FILE_PID = 36863
 # automatic
 %F = $(notdir $%)
 # environment
@@ -145,7 +147,7 @@ PWD = /home/carlos.amaral@db1.com.br/Documents/github/personal/golang-challenge
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 6693
+SSH_AGENT_PID = 3865
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -207,7 +209,7 @@ USER = carlos.amaral
 # environment
 SNAP_REVISION = 102
 # makefile
-.DEFAULT_GOAL := create
+.DEFAULT_GOAL := 
 # environment
 AWS_CLI = /home/carlos.amaral@db1.com.br/.local/aws-cli/v2/2.5.6/bin
 # environment
@@ -279,12 +281,10 @@ PROTOC_GEN_GO_CLI = /home/carlos.amaral@db1.com.br/.local/protoc-gen-go-cli
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1148527
+VSCODE_PID = 36909
 # variable set hash-table stats:
  
-make: *** No rule to make target 'all'.  Stop.
-
-# Load=135/1024=13%, Rehash=0, Collisions=13/160=8%
+# Load=135/1024=13%, Rehash=0, Collisions=13/157=8%
 
 # Pattern-specific Variable Values
 
@@ -292,9 +292,9 @@ make: *** No rule to make target 'all'.  Stop.
 
 # Directories
 
-# . (device 64768, inode 2885803): 13 files, no impossibilities.
+# . (device 64768, inode 2885803): 7 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -312,25 +312,16 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-05 10:31:16.743842955
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
 
-create:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 2):
-	protoc --proto_path=proto proto/*.proto --go_out=gen/
-	protoc --proto_path=proto proto/*.proto --go-grpc_out=gen/
-
-run_client:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 13):
-	go mod tidy
-	go run client/client.go
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
 
 # Not a target:
 .DEFAULT:
@@ -338,35 +329,27 @@ run_client:
 #  Modification time never checked.
 #  File has not been updated.
 
-run_server:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 9):
-	go mod tidy
-	go run server/server.go
-
-clean:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 6):
-	rm gen/proto/*.go
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
 
 # files hash-table stats:
-# Load=8/1024=1%, Rehash=0, Collisions=0/18=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 170 B / avg = 7 B
-# current buf: size = 8162 B / used = 170 B / count = 22 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 15 / storage = 131 B / avg = 8 B
+# current buf: size = 8162 B / used = 131 B / count = 15 / avg = 8 B
 
-# strcache performance: lookups = 30 / hit rate = 26%
+# strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
-# Load=22/8192=0%, Rehash=0, Collisions=1/30=3%
-# Finished Make data base on Fri Aug  5 15:09:43 2022
+# Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
+# Finished Make data base on Sat Aug  6 00:41:25 2022
 
  

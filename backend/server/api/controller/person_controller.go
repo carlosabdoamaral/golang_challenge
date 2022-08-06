@@ -34,3 +34,24 @@ func CreatePerson(c *gin.Context) {
 	defer conn.Close()
 	c.IndentedJSON(http.StatusOK, "OK")
 }
+
+func AlterAddress(c *gin.Context) {
+	conn, err := grpc.Dial("localhost:8081", grpc.WithInsecure())
+	if err != nil {
+		c.IndentedJSON(http.StatusInternalServerError, "Error while connecting to server")
+	}
+
+	var new_address pb.AlterAddressRequest
+	body, err := ioutil.ReadAll(c.Request.Body)
+	if err != nil {
+		log.Printf("Error while reading body: %s", err)
+	}
+
+	json.Unmarshal([]byte(body), &new_address)
+
+	client := pb.NewPersonServiceClient(conn)
+	client.AlterAddress(context.Background(), &new_address)
+	defer conn.Close()
+	
+	c.IndentedJSON(http.StatusOK, "OK")
+}

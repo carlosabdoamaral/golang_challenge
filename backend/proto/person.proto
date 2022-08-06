@@ -4,6 +4,7 @@ option go_package = "./proto";
 
 service PersonService {
     rpc CreatePerson(PersonModel) returns (CreatePersonResponse) {}
+    rpc AlterAddress(AlterAddressRequest) returns (AlterAddressResponse) {}
 }
 
 message PersonModel {
@@ -20,5 +21,15 @@ message AddressModel {
 }
 
 message CreatePersonResponse {
+    string status = 1;
+}
+
+
+message AlterAddressRequest {
+    int64 id_person = 1;
+    AddressModel address = 2;
+}
+
+message AlterAddressResponse {
     string status = 1;
 }
