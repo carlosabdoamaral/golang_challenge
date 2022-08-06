@@ -9,6 +9,8 @@ import (
 	"net/http"
 
 	pb "carlosamaral/gen/proto"
+	"carlosamaral/server/api/model"
+	"carlosamaral/server/api/utils"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
@@ -52,6 +54,20 @@ func AlterAddress(c *gin.Context) {
 	client := pb.NewPersonServiceClient(conn)
 	client.AlterAddress(context.Background(), &new_address)
 	defer conn.Close()
-	
+
 	c.IndentedJSON(http.StatusOK, "OK")
+}
+
+func PostDiary(c *gin.Context) {
+	var diary model.Diary
+	body, err := ioutil.ReadAll(c.Request.Body)
+	if err != nil {
+		log.Println(err)
+	}
+
+	json.Unmarshal([]byte(body), &diary)
+
+	utils.AppendMessageToRabbitQueue(diary.Id_person, diary.Message)
+
+	c.IndentedJSON(http.StatusOK, "Successfully added message to queue")
 }

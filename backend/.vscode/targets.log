@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug  6 00:45:08 2022
+# Make data base, printed on Sat Aug  6 02:11:14 2022
 
 # Variables
 
@@ -93,7 +95,7 @@ KRB5CCNAME = FILE:/tmp/krb5cc_680677324_Gf0a7s
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/.nvm/versions/node/v16.16.0/bin:/home/carlos.amaral@db1.com.br/.gvm/bin:/home/carlos.amaral@db1.com.br/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/.local/aws-cli/v2/2.5.6/bin:/home/carlos.amaral@db1.com.br/.local/protoc-gen-go-cli:/home/carlos.amaral@db1.com.br/.local/mkcert-cli:/home/carlos.amaral@db1.com.br/.local/google-cloud-sdk/bin:
+PATH = /home/carlos.amaral@db1.com.br/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 GPG_AGENT_INFO = /run/user/680677324/gnupg/S.gpg-agent:0:1
 # environment
@@ -131,7 +133,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/680677324/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 36863
+GIO_LAUNCHED_DESKTOP_FILE_PID = 170301
 # automatic
 %F = $(notdir $%)
 # environment
@@ -151,7 +153,7 @@ ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
-MANPATH = /home/carlos.amaral@db1.com.br/.nvm/versions/node/v16.16.0/share/man:/usr/local/man:/usr/local/share/man:/usr/share/man:/opt/rudder/share/man:/opt/rudder/share/man
+MANPATH = /usr/local/man:/usr/local/share/man:/usr/share/man:/opt/rudder/share/man
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -247,6 +249,8 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
+NO_AT_BRIDGE = 1
+# environment
 QT_ACCESSIBILITY = 1
 # default
 MAKEFILES := 
@@ -278,13 +282,11 @@ GJS_DEBUG_OUTPUT = stderr
 PROTOC_GEN_GO_CLI = /home/carlos.amaral@db1.com.br/.local/protoc-gen-go-cli
 # environment
 LANG = C
+ 
 # environment
 VSCODE_PID = 36909
 # variable set hash-table stats:
- 
-make: *** No rule to make target 'all'.  Stop.
-
-# Load=135/1024=13%, Rehash=0, Collisions=13/160=8%
+# Load=136/1024=13%, Rehash=0, Collisions=13/161=8%
 
 # Pattern-specific Variable Values
 
@@ -292,9 +294,9 @@ make: *** No rule to make target 'all'.  Stop.
 
 # Directories
 
-# . (device 64768, inode 3159985): 9 files, no impossibilities.
+# . (device 64768, inode 3159985): 10 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -361,12 +363,12 @@ clean:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 143 B / avg = 7 B
-# current buf: size = 8162 B / used = 143 B / count = 18 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 19 / storage = 152 B / avg = 8 B
+# current buf: size = 8162 B / used = 152 B / count = 19 / avg = 8 B
 
-# strcache performance: lookups = 26 / hit rate = 30%
+# strcache performance: lookups = 27 / hit rate = 29%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=1/26=4%
-# Finished Make data base on Sat Aug  6 00:45:08 2022
+# Load=19/8192=0%, Rehash=0, Collisions=1/27=4%
+# Finished Make data base on Sat Aug  6 02:11:14 2022
 
  

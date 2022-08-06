@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug  6 00:41:25 2022
+# Make data base, printed on Sat Aug  6 01:58:38 2022
 
 # Variables
 
@@ -95,7 +95,7 @@ KRB5CCNAME = FILE:/tmp/krb5cc_680677324_Gf0a7s
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/.nvm/versions/node/v16.16.0/bin:/home/carlos.amaral@db1.com.br/.gvm/bin:/home/carlos.amaral@db1.com.br/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/.local/aws-cli/v2/2.5.6/bin:/home/carlos.amaral@db1.com.br/.local/protoc-gen-go-cli:/home/carlos.amaral@db1.com.br/.local/mkcert-cli:/home/carlos.amaral@db1.com.br/.local/google-cloud-sdk/bin:
+PATH = /home/carlos.amaral@db1.com.br/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 GPG_AGENT_INFO = /run/user/680677324/gnupg/S.gpg-agent:0:1
 # environment
@@ -133,7 +133,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/680677324/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 36863
+GIO_LAUNCHED_DESKTOP_FILE_PID = 139263
 # automatic
 %F = $(notdir $%)
 # environment
@@ -153,7 +153,7 @@ ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
-MANPATH = /home/carlos.amaral@db1.com.br/.nvm/versions/node/v16.16.0/share/man:/usr/local/man:/usr/local/share/man:/usr/share/man:/opt/rudder/share/man:/opt/rudder/share/man
+MANPATH = /usr/local/man:/usr/local/share/man:/usr/share/man:/opt/rudder/share/man
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -249,6 +249,8 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
+NO_AT_BRIDGE = 1
+# environment
 QT_ACCESSIBILITY = 1
 # default
 MAKEFILES := 
@@ -284,7 +286,7 @@ LANG = C
 VSCODE_PID = 36909
 # variable set hash-table stats:
  
-# Load=135/1024=13%, Rehash=0, Collisions=13/157=8%
+# Load=136/1024=13%, Rehash=0, Collisions=13/158=8%
 
 # Pattern-specific Variable Values
 
@@ -350,6 +352,6 @@ GNUmakefile:
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Sat Aug  6 00:41:25 2022
+# Finished Make data base on Sat Aug  6 01:58:38 2022
 
  

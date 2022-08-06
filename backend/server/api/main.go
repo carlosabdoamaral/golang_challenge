@@ -14,6 +14,7 @@ func main() {
 
 	api.POST("/person/new", controller.CreatePerson)
 	api.PUT("/address/alter", controller.AlterAddress)
+	api.POST("/diary/new", controller.PostDiary)
 
 	err := router.Run()
 	if err != nil {
