@@ -47,24 +47,3 @@ func CreateQueue() {
 
 	fmt.Println(q)
 }
-
-func AppendMessageToRabbitQueue(id_person string, message string) error {
-	err := rabbit_ch.Publish(
-		"",
-		"DiaryQueue",
-		false,
-		false,
-		amqp.Publishing{
-			ContentType: "text/plain",
-			Body:        []byte(message),
-		},
-	)
-
-	if err != nil {
-		log.Println(err)
-		return err
-	}
-
-	log.Println("Successfully added message to queue")
-	return nil
-}

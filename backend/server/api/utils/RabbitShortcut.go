@@ -25,7 +25,7 @@ func AppendMessageToRabbitQueue(id_person int, message string) error {
 		false,
 		amqp.Publishing{
 			ContentType: "text/plain",
-			Body:        []byte(fmt.Sprintf(`#%d - %s`, id_person, message)),
+			Body:        []byte(fmt.Sprintf(`%d#%s`, id_person, message)),
 		},
 	)
 

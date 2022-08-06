@@ -6,6 +6,7 @@ import (
 	_ "github.com/lib/pq"
 	"github.com/streadway/amqp"
 	"log"
+	"strconv"
 )
 
 func main() {
@@ -37,8 +38,10 @@ func main() {
 	forever := make(chan bool)
 	go func() {
 		for message := range messages {
-			fmt.Printf("Message: %s\n", message.Body)
-			RabbitInsertMessage(16, string(message.Body))
+			log.Println("Message received!")
+			id, content := TranslateMessage(string(message.Body))
+
+			RabbitInsertMessage(id, content)
 		}
 	}()
 
@@ -61,9 +64,24 @@ func RabbitInsertMessage(id_person int, message string) error {
 	query := fmt.Sprintf(`INSERT INTO diary(id_person, message) VALUES (%d, '%s')`, id_person, message)
 	_, err = db.Query(query)
 	if err != nil {
+		log.Println(err)
 		return err
 	}
 
 	defer db.Close()
 	return nil
+}
+
+func TranslateMessage(message string) (int, string) {
+	var id_hashtag int
+	for index, s := range message {
+		if s == '#' {
+			id_hashtag = index
+		}
+	}
+
+	id_person := message[:id_hashtag]
+	message_content := message[id_hashtag+1:]
+	id_person_int, _ := strconv.Atoi(id_person)
+	return id_person_int, message_content
 }

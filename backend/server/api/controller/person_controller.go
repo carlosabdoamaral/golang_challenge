@@ -67,7 +67,10 @@ func PostDiary(c *gin.Context) {
 
 	json.Unmarshal([]byte(body), &diary)
 
-	utils.AppendMessageToRabbitQueue(diary.Id_person, diary.Message)
+	err = utils.AppendMessageToRabbitQueue(diary.Id_person, diary.Message)
+	if err != nil {
+		c.IndentedJSON(http.StatusConflict, err)
+	}
 
 	c.IndentedJSON(http.StatusOK, "Successfully added message to queue")
 }
