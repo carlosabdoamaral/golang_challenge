@@ -1,0 +1,19 @@
+syntax = "proto3";
+package proto;
+option go_package = "./proto";
+
+service AddressService {
+  rpc NewAddress(NewAddressRequest) returns (NewAddressResponse) {};
+  rpc ChangeAddress(NewAddressRequest) returns (NewAddressResponse) {};
+}
+
+message NewAddressRequest {
+  int64 id_person = 1;
+  string street = 2;
+  string neighborhood = 3;
+  string city = 4;
+}
+
+message NewAddressResponse {
+  string status = 1;
+}

@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug  6 01:58:38 2022
+# Make data base, printed on Thu Aug 11 14:42:08 2022
 
 # Variables
 
@@ -47,13 +45,13 @@ SHELL = /bin/sh
 # environment
 MKCERT_CLi = /home/carlos.amaral@db1.com.br/.local/mkcert-cli
 # environment
-SNAP_DATA = /var/snap/code/102
+SNAP_DATA = /var/snap/code/104
 # environment
 GDM_LANG = en
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 9:60902
+JOURNAL_STREAM = 9:69414
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -75,9 +73,9 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/des
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/680677324/bus
 # environment
-_ = /snap/code/102/usr/share/code/code
+_ = /snap/code/104/usr/share/code/code
 # environment
-MANAGERPID = 3706
+MANAGERPID = 5315
 # environment
 GVM_PATH_BACKUP = /home/carlos.amaral@db1.com.br/.gvm/bin:/home/carlos.amaral@db1.com.br/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/.local/aws-cli/v2/2.5.6/bin:/home/carlos.amaral@db1.com.br/.local/protoc-gen-go-cli:/home/carlos.amaral@db1.com.br/.local/mkcert-cli:/home/carlos.amaral@db1.com.br/.local/google-cloud-sdk/bin:
 # environment
@@ -89,29 +87,29 @@ GOPROXY = https://proxy.golang.org,direct
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/102/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/104/usr/share/glib-2.0/schemas
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_680677324_Gf0a7s
+KRB5CCNAME = FILE:/tmp/krb5cc_680677324_9Fb0sb
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/carlos.amaral@db1.com.br/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/.nvm/versions/node/v16.16.0/bin:/home/carlos.amaral@db1.com.br/.gvm/bin:/home/carlos.amaral@db1.com.br/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/.local/aws-cli/v2/2.5.6/bin:/home/carlos.amaral@db1.com.br/.local/protoc-gen-go-cli:/home/carlos.amaral@db1.com.br/.local/mkcert-cli:/home/carlos.amaral@db1.com.br/.local/google-cloud-sdk/bin:
 # environment
 GPG_AGENT_INFO = /run/user/680677324/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/MGA10456.db1.com.br:@/tmp/.ICE-unix/3903,unix/MGA10456.db1.com.br:/tmp/.ICE-unix/3903
+SESSION_MANAGER = local/MGA10456.db1.com.br:@/tmp/.ICE-unix/5508,unix/MGA10456.db1.com.br:/tmp/.ICE-unix/5508
 # environment
 XDG_RUNTIME_DIR = /run/user/680677324
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/carlos.amaral@db1.com.br/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-SNAP = /snap/code/102
+SNAP = /snap/code/104
 # environment
 GOPATH = /home/carlos.amaral@db1.com.br/go
 # environment
 NVM_BIN = /home/carlos.amaral@db1.com.br/.nvm/versions/node/v16.16.0/bin
 # environment
-SNAP_VERSION = 3b889b09
+SNAP_VERSION = 6d9b74a7
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -119,9 +117,9 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = fa093e13939d49c9bff8207f7d77cbc5
+INVOCATION_ID = 7af70ff7d5d64bb99848e43b44c36faf
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/102/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/104/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -133,7 +131,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/680677324/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 139263
+GIO_LAUNCHED_DESKTOP_FILE_PID = 91481
 # automatic
 %F = $(notdir $%)
 # environment
@@ -147,13 +145,13 @@ PWD = /home/carlos.amaral@db1.com.br/Documents/github/personal/golang-challenge
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 3865
+SSH_AGENT_PID = 5471
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
-MANPATH = /usr/local/man:/usr/local/share/man:/usr/share/man:/opt/rudder/share/man
+MANPATH = /home/carlos.amaral@db1.com.br/.nvm/versions/node/v16.16.0/share/man:/usr/local/man:/usr/local/share/man:/usr/share/man:/opt/rudder/share/man:/opt/rudder/share/man
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -163,7 +161,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/carlos.amaral@db1.com.br/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+VSCODE_CODE_CACHE_PATH = /home/carlos.amaral@db1.com.br/.config/Code/CachedData/6d9b74a70ca9c7733b29f0456fd8195364076dda
 # environment
 LOGNAME = carlos.amaral
 # environment
@@ -197,7 +195,7 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SNAP_USER_DATA = /home/carlos.amaral@db1.com.br/snap/code/102
+SNAP_USER_DATA = /home/carlos.amaral@db1.com.br/snap/code/104
 # environment
 SHLVL = 0
 # environment
@@ -207,7 +205,7 @@ MAKE_VERSION := 4.2.1
 # environment
 USER = carlos.amaral
 # environment
-SNAP_REVISION = 102
+SNAP_REVISION = 104
 # makefile
 .DEFAULT_GOAL := 
 # environment
@@ -231,7 +229,7 @@ LANGUAGE = en
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/680677324/vscode-6dbe3c7d-1.69.2-main.sock
+VSCODE_IPC_HOOK = /run/user/680677324/vscode-6dbe3c7d-1.70.1-main.sock
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # makefile
@@ -248,8 +246,6 @@ NVM_DIR = /home/carlos.amaral@db1.com.br/.nvm
 GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
-# environment
-NO_AT_BRIDGE = 1
 # environment
 QT_ACCESSIBILITY = 1
 # default
@@ -280,13 +276,15 @@ GJS_DEBUG_OUTPUT = stderr
 .RECIPEPREFIX := 
 # environment
 PROTOC_GEN_GO_CLI = /home/carlos.amaral@db1.com.br/.local/protoc-gen-go-cli
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 # environment
 LANG = C
 # environment
-VSCODE_PID = 36909
+VSCODE_PID = 91534
 # variable set hash-table stats:
- 
-# Load=136/1024=13%, Rehash=0, Collisions=13/158=8%
+# Load=135/1024=13%, Rehash=0, Collisions=13/157=8%
 
 # Pattern-specific Variable Values
 
@@ -352,6 +350,6 @@ GNUmakefile:
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Sat Aug  6 01:58:38 2022
+# Finished Make data base on Thu Aug 11 14:42:09 2022
 
  

@@ -12,7 +12,7 @@ func main() {
 	router.Use(CORS())
 	api := router.Group("/api")
 
-	api.POST("/person/new", controller.CreatePerson)
+	api.POST("/challenge/new", controller.CreatePerson)
 	api.PUT("/address/alter", controller.AlterAddress)
 	api.POST("/diary/new", controller.PostDiary)
 

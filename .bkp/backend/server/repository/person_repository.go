@@ -12,17 +12,17 @@ import (
 var db *sql.DB = database.Connect()
 
 func InsertPerson(person *pb.PersonModel) (*pb.CreatePersonResponse, error) {
-	_, err := db.Query(`INSERT INTO person(name, age) VALUES ($1, $2)`, person.Name, person.Age)
+	_, err := db.Query(`INSERT INTO challenge(name, age) VALUES ($1, $2)`, person.Name, person.Age)
 	if err != nil {
 		return &pb.CreatePersonResponse{
-			Status: "Failed: Creating person!",
+			Status: "Failed: Creating challenge!",
 		}, err
 	}
 
 	id_person, err := SelectPersonIdByName(person.Name)
 	if err != nil {
 		return &pb.CreatePersonResponse{
-			Status: "Failed: Selecting person by name!",
+			Status: "Failed: Selecting challenge by name!",
 		}, err
 	}
 
@@ -48,7 +48,7 @@ func InsertAddress(id_person int, address *pb.AddressModel) error {
 }
 
 func SelectPersonIdByName(name string) (int, error) {
-	query := fmt.Sprintf(`SELECT id_person FROM person WHERE name = '%s'`, name)
+	query := fmt.Sprintf(`SELECT id_person FROM challenge WHERE name = '%s'`, name)
 	rows, err := db.Query(query)
 
 	if err != nil {

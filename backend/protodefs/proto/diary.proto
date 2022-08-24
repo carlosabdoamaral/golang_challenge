@@ -1,0 +1,16 @@
+syntax = "proto3";
+package proto;
+option go_package = "./proto";
+
+service DiaryService {
+  rpc NewDiary(NewDiaryRequest) returns (NewDiaryResponse) {};
+}
+
+message NewDiaryRequest {
+  string content = 1;
+}
+
+message NewDiaryResponse {
+  string status = 1;
+  repeated string historic = 2;
+}
