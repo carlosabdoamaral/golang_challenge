@@ -1,12 +1,9 @@
-import { Route, Routes } from "react-router-dom"
-import { CreatePersonView } from "./views/CreatePersonView"
-import { HomeView } from "./views/HomeView"
+import { Route, Routes } from "react-router"
+import { IndexView } from "./views/IndexView"
+import { ReposView } from "./views/ReposView"
 
 export const URLS = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<HomeView/>}/>
-            <Route path="/new" element={<CreatePersonView/>}/>
-        </Routes>
-    )
+    <Routes>
+        <Route path="/rep" element={<ReposView/>} />
+    </Routes>
 }
