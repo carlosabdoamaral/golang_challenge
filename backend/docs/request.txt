@@ -1,0 +1,19 @@
+{
+	"user": {
+		"fullname": "Insomnia Example",
+		"cpf": "12312312312",
+		"age": 18
+	},
+	"address" : {
+		"user" : "12312312312",
+		"street" : "Rua X",
+		"neighborhood" : "Bairo Y",
+		"city" : "Cidade Z"
+	},
+	"diary" : [
+		{
+			"author" : "12312312312",
+			"message" : "Primeiro diario"
+		}
+	]
+}
