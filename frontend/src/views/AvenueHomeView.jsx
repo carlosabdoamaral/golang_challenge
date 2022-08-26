@@ -4,7 +4,7 @@ import {partners_list, partners_title, what_is_avenue_body, what_is_avenue_title
 import Card from 'react-bootstrap/Card';
 import { useEffect } from 'react';
 
-export const IndexView = _ => {
+export const AvenueHomeView = _ => {
 
     useEffect( () => {
         window.document.title = "Avenue | Home"

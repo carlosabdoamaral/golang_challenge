@@ -1,20 +1,14 @@
 import Accordion from 'react-bootstrap/Accordion';
-import { reposData } from '../static/data/reposData';
-import Table from 'react-bootstrap/Table';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Navbar from 'react-bootstrap/Navbar';
-import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import Badge from 'react-bootstrap/Badge';
-import Toast from 'react-bootstrap/Toast';
-import { CardImg, Row } from 'react-bootstrap';
-import { TopBar } from '../widgets/Topbar';
 import Card from 'react-bootstrap/Card';
-import { TechnologyData } from '../static/data/technologyData';
+import { TopBar } from '../widgets/Topbar';
+import { reposData } from '../static/data/reposData';
 import { useEffect } from 'react';
 
-export const ReposView = _ => {
+export const AvenueReposView = _ => {
 
     useEffect( () => {
         window.document.title = "Avenue | Repository"

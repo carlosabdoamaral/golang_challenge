@@ -17,7 +17,7 @@ func ChangeAddress(c *gin.Context) {
 		c.IndentedJSON(http.StatusConflict, "Something went wrong")
 	}
 
-	var userFromBody models.CreateUser
+	var userFromBody models.FullUser
 	json.Unmarshal([]byte(body), &userFromBody)
 
 	firebaseOperations.CreateUser(userFromBody.User)

@@ -15,6 +15,7 @@ func main() {
 
 	userGroup := v1.Group("/user")
 	userGroup.POST("/create", rest.CreateUser)
+	userGroup.GET("/all", rest.GetAllUsers)
 
 	addressGroup := v1.Group("/address")
 	addressGroup.PUT("/change", rest.ChangeAddress)

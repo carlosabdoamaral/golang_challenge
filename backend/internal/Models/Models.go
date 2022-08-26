@@ -6,10 +6,12 @@ type Diary struct {
 }
 
 type Address struct {
-	User         string `json:"user,omitempty"` // CPF
-	Street       string `json:"street,omitempty"`
-	Neighborhood string `json:"neighborhood,omitempty"`
-	City         string `json:"city,omitempty"`
+	User       string `json:"user,omitempty"` // CPF
+	Street     string `json:"street,omitempty"`
+	State      string `json:"state,omitempty"`
+	City       string `json:"city,omitempty"`
+	Number     string `json:"number,omitempty"`
+	Complement string `json:"complement,omitempty"`
 }
 
 type User struct {
@@ -18,7 +20,7 @@ type User struct {
 	Age      int    `json:"age,omitempty"`
 }
 
-type CreateUser struct {
+type FullUser struct {
 	User    User    `json:"user,omitempty"`
 	Address Address `json:"address,omitempty"`
 	Diary   []Diary `json:"diary,omitempty"`

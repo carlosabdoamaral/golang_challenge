@@ -18,21 +18,22 @@ func CreateUser(c *gin.Context) {
 		c.IndentedJSON(http.StatusConflict, "Something went wrong")
 	}
 
-	var userFromBody models.CreateUser
+	var userFromBody models.FullUser
 	json.Unmarshal([]byte(body), &userFromBody)
 
-	userExists, _ := firebaseOperations.CheckIfUserExists(userFromBody.User.Cpf)
+	userExists := false
 
 	if !userExists {
 		firebaseOperations.CreateUser(userFromBody.User)
 		firebaseOperations.CreateAddress(userFromBody.Address)
-		for _, diary := range userFromBody.Diary {
-			firebaseOperations.CreateDiary(diary)
-		}
-
 		c.IndentedJSON(http.StatusCreated, "Created!")
 	} else {
 		returnMessage := fmt.Sprintf("The user '%s' already exists", userFromBody.User.Fullname)
 		c.IndentedJSON(http.StatusConflict, returnMessage)
 	}
+}
+
+func GetAllUsers(c *gin.Context) {
+	res := firebaseOperations.GetAllUsers()
+	c.IndentedJSON(http.StatusOK, res)
 }
