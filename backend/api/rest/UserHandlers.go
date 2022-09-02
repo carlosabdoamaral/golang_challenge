@@ -37,3 +37,9 @@ func GetAllUsers(c *gin.Context) {
 	res := firebaseOperations.GetAllUsers()
 	c.IndentedJSON(http.StatusOK, res)
 }
+
+func GetUserByCpf(c *gin.Context) {
+	cpf := c.Param("cpf")
+	res := firebaseOperations.GetUserByCpf(cpf)
+	c.IndentedJSON(http.StatusOK, res)
+}

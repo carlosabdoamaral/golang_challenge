@@ -9,38 +9,20 @@ import (
 )
 
 func CreateUser(user models.User) {
-	client := ConnectToFirestore()
-	client.Collection("user").NewDoc().Create(context.Background(), user)
+	client.
+		Collection("user").
+		Doc(user.Cpf).
+		Create(context.Background(), user)
 }
 
-func CheckIfUserExists(cpf string) (bool, error) {
-	client := ConnectToFirestore()
-	iter := client.Collection("user").Where("Cpf", "==", cpf).Documents(context.Background())
-
-	for {
-		doc, err := iter.Next()
-
-		switch {
-		case doc.Data() != nil:
-			return true, err
-		case err != nil:
-			return false, err
-		default:
-			return false, err
-		}
-	}
-}
-
-func GetAllUsers() []models.User {
-	client := ConnectToFirestore()
-
+func GetAllUsers() []models.FullUser {
 	iter := client.Collection("user").Documents(context.Background())
-	defer iter.Stop() // add this line to ensure resources cleaned up
+	defer iter.Stop()
 
-	var users []models.User
-
+	var users []models.FullUser
 	for {
 		doc, err := iter.Next()
+
 		if err == iterator.Done {
 			break
 		}
@@ -53,8 +35,31 @@ func GetAllUsers() []models.User {
 			log.Println(err)
 		}
 
-		users = append(users, u)
+		var fullUser models.FullUser = GetUserByCpf(u.Cpf)
+		users = append(users, fullUser)
 	}
 
 	return users
+}
+
+func GetUserByCpf(cpf string) models.FullUser {
+	user_res, err := client.Collection("user").Doc(cpf).Get(context.Background())
+	if err != nil {
+		log.Println("Error getting user", err)
+	}
+	var u models.User
+	user_res.DataTo(&u)
+
+	address_res, err := client.Collection("address").Doc(cpf).Get(context.Background())
+	if err != nil {
+		log.Println("Error getting address", err)
+	}
+	var a models.Address
+	address_res.DataTo(&a)
+
+	var fulluser models.FullUser
+	fulluser.User = u
+	fulluser.Address = a
+
+	return fulluser
 }

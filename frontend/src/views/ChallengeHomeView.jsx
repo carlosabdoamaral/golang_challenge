@@ -13,13 +13,24 @@ import Toast from "react-bootstrap/Toast"
 
 export const ChallengeHomeView = _ => {
     const [dataKey, setDatakey] = useState([])
-
+    const [userToUpdateCPF, setUserToUpdateCPF] = useState("")
 
     //CREATE USER MODAL
     const [showingNewUserModal, setShowingNewUserModal] = useState(false)
     const openNewUseModal = () => { setShowingNewUserModal(true) }
     const closeNewUseModal = () => { setShowingNewUserModal(false) }
     const [createUserModalError, setCreateUserModalError] = useState("")
+
+    //UPDATE USER MODAL
+    const [showingUpdateUserModal, setShowingUpdateUserModal] = useState(false)
+    const [updateUserModalError, setUpdateUserModalError] = useState("")
+    const openUpdateUserModal = cpf => {
+        setUserToUpdateCPF(cpf)
+        setShowingUpdateUserModal(true)
+    }
+    const closeUpdateUserModal = () => {
+        setShowingUpdateUserModal(false)
+    }
 
     //TOAST
     const [showToast, setShowToast] = useState(false)
@@ -29,7 +40,7 @@ export const ChallengeHomeView = _ => {
 
     useEffect(_ => { window.document.title = "Avenue | Challenge" })
     useEffect(_ => {
-        getUsers(true)
+        getUsers(false)
     }, [])
 
     const [uf, setUF] = useState("State")
@@ -64,8 +75,8 @@ export const ChallengeHomeView = _ => {
                     street: address,
                     state: uf,
                     city: city,
-                    number : addressNumber,
-                    complement : complement
+                    number: addressNumber,
+                    complement: complement
                 },
                 diary: []
             }
@@ -78,7 +89,7 @@ export const ChallengeHomeView = _ => {
                         setToastSubtitle(`${date.getHours()}:${date.getMinutes()}`)
                         setToastMessage(`User ${body.user.fullname} created successfully`)
                         setShowToast(true)
-                        
+
                         getUsers(false)
 
                         closeNewUseModal()
@@ -96,29 +107,45 @@ export const ChallengeHomeView = _ => {
                     setCity(res.data.localidade)
                     setAddress(res.data.logradouro)
                     setUF(res.data.uf)
-                    console.log(res.data)
                 })
         }
     }
 
     const getUsers = mockmode => {
         if (mockmode) {
-            setDatakey(
-                [
-                    {
-                        "cpf": "00000000000",
-                        "fullname": "Exemplo mock",
-                        "age": 20
-                    }
-                ]
-            )
+            setDatakey([{ "cpf": "00000000000", "fullname": "Exemplo mock", "age": 20 }])
         } else {
             axios.get(env.local.allUsers)
-            .then((res) => {
-                if (res.data.length > 0) {
-                    setDatakey(res.data)
-                }
-            })
+                .then((res) => {
+                    if (res.data.length > 0) {
+                        setDatakey(res.data)
+                    }
+                })
+        }
+    }
+
+    const handleUpdateAddressRequest = _ => {
+        const cep = document.getElementById("cep").value
+        const addressNumber = document.getElementById("addressNth").value
+        const complement = document.getElementById("complement").value
+
+        if (cep.length <= 8 && addressNumber !== null) {
+            const data = {
+                user: `${userToUpdateCPF}`,
+                street: address,
+                state: uf,
+                city: city,
+                number: addressNumber,
+                complement: complement
+            }
+
+            axios.put(env.local.updateAddress, data)
+                .then((res) => {
+                    if (res.status === 200) {
+                        getUsers()
+                        closeUpdateUserModal()
+                    }
+                })
         }
     }
 
@@ -140,7 +167,7 @@ export const ChallengeHomeView = _ => {
                 <Button variant="outline-success" onClick={openNewUseModal}>Create Account</Button>
             </div>
 
-            <hr className='mx-5'/>
+            <hr className='mx-5' />
 
             <div className="list mx-5">
                 {
@@ -148,21 +175,21 @@ export const ChallengeHomeView = _ => {
                         <Card className="mt-2">
                             <Card.Body className='d-flex justify-content-between'>
                                 <div>
-                                    <Card.Title>{user.fullname}</Card.Title>
-                                    <p>{user.cpf} | {user.age} years</p>
+                                    <Card.Title>{user.user.fullname}</Card.Title>
+                                    <p>{user.address.state}, {user.address.city}, {user.address.street}, {user.address.number}</p>
                                 </div>
 
                                 <div>
                                     <Button variant="outline-dark" className='mx-1'>New note</Button>
                                     <Button variant="outline-dark" className='mx-1'>All notes</Button>
-                                    <Button variant="outline-dark" className='mx-1'>Update address</Button>
+
+                                    <Button variant="outline-dark" className='mx-1' onClick={() => { openUpdateUserModal(user.user.cpf) }}>Update address</Button>
                                 </div>
                             </Card.Body>
                         </Card>
                     ))
                 }
             </div>
-
 
 
             <Modal
@@ -183,7 +210,7 @@ export const ChallengeHomeView = _ => {
                         </Alert>
                     }
 
-                    <Form onSubmit={handleNewUserRequest}>
+                    <Form>
                         <div className="border rounded px-3 my-3">
                             <h4 className="mt-3 text-center">User</h4>
                             <Row>
@@ -266,6 +293,76 @@ export const ChallengeHomeView = _ => {
                     </Form>
 
                     <Button onClick={handleNewUserRequest} variant='outline-success' className="w-100 mt-5">Create!</Button>
+                </Modal.Body>
+            </Modal>
+
+            <Modal
+                show={showingUpdateUserModal}
+                onHide={closeUpdateUserModal}
+                size="lg"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Update Address</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    {
+                        createUserModalError !== "" &&
+                        <Alert variant='danger'>
+                            <b>Important!</b> <br /> {updateUserModalError}
+                        </Alert>
+                    }
+
+                    <Form>
+                        <div className="rounded px-3 my-3">
+                            <h4 className="mt-3 text-center">Address</h4>
+
+                            <Form.Group className="mb-3 w-50 mx-auto">
+                                <Form.Control type="text" placeholder="CEP" onChange={getCEP} id="cep" />
+                            </Form.Group>
+
+                            <Row>
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>UF</Form.Label>
+                                        <Form.Control type="text" placeholder={uf} disabled id="uf" />
+                                    </Form.Group>
+                                </Col>
+
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>City</Form.Label>
+                                        <Form.Control type="text" placeholder={city} disabled id="city" />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+
+                            <Row>
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Address</Form.Label>
+                                        <Form.Control type="text" placeholder={address} disabled id="address" />
+                                    </Form.Group>
+                                </Col>
+
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Number</Form.Label>
+                                        <Form.Control type="number" placeholder="number" id="addressNth" required />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label>Complement</Form.Label>
+                                <Form.Control type="text" placeholder='Complement' id="complement" />
+                            </Form.Group>
+                        </div>
+
+                    </Form>
+
+                    <Button onClick={handleUpdateAddressRequest} variant='outline-success' className="w-100 mt-5">Update!</Button>
                 </Modal.Body>
             </Modal>
         </div >

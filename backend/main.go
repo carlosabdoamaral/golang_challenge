@@ -16,12 +16,14 @@ func main() {
 	userGroup := v1.Group("/user")
 	userGroup.POST("/create", rest.CreateUser)
 	userGroup.GET("/all", rest.GetAllUsers)
+	userGroup.GET("/cpf/:cpf", rest.GetUserByCpf)
 
 	addressGroup := v1.Group("/address")
-	addressGroup.PUT("/change", rest.ChangeAddress)
+	addressGroup.PUT("/update", rest.ChangeAddress)
 
 	diaryGroup := v1.Group("/diary")
 	diaryGroup.POST("/new", rest.CreateDiary)
+	diaryGroup.GET("/cpf/:cpf", rest.GetDiaryFromCpf) //NOT WORKING
 
 	err := router.Run()
 	if err != nil {

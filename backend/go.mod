@@ -13,7 +13,7 @@ require (
 require (
 	cloud.google.com/go v0.104.0 // indirect
 	cloud.google.com/go/compute v1.9.0 // indirect
-	cloud.google.com/go/firestore v1.6.1 // indirect
+	cloud.google.com/go/firestore v1.6.1
 	cloud.google.com/go/iam v0.3.0 // indirect
 	cloud.google.com/go/storage v1.25.0 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect

@@ -2,7 +2,6 @@ package rest
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -22,17 +21,18 @@ func CreateDiary(c *gin.Context) {
 	json.Unmarshal([]byte(body), &diaryList)
 
 	for _, diary := range diaryList {
-		userExists, err := firebaseOperations.CheckIfUserExists(diary.Author)
 		if err != nil {
 			c.IndentedJSON(http.StatusConflict, "Some error occurred while checking if user exists")
 		}
 
-		if userExists {
-			firebaseOperations.CreateDiary(diary)
-			c.IndentedJSON(http.StatusCreated, "Created!")
-		} else {
-			returnMessage := fmt.Sprintf("User %s does not exist", diary.Author)
-			c.IndentedJSON(http.StatusConflict, returnMessage)
-		}
+		//TODO: Validar se o usuário existe
+		firebaseOperations.CreateDiary(diary)
+		c.IndentedJSON(http.StatusCreated, "Created!")
 	}
+}
+
+func GetDiaryFromCpf(c *gin.Context) {
+	cpf := c.Param("cpf")
+	res := firebaseOperations.GetDiaryFromCpf(cpf)
+	c.IndentedJSON(http.StatusOK, res)
 }
