@@ -15,7 +15,9 @@
 # vendor/
 
 backend/SA.json
+backend/internal/handlers/grpc/server/SA.json
 
 ./idea
 ./vscode
 ./bkp
+
