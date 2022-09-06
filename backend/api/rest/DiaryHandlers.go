@@ -30,9 +30,3 @@ func CreateDiary(c *gin.Context) {
 		c.IndentedJSON(http.StatusCreated, "Created!")
 	}
 }
-
-func GetDiaryFromCpf(c *gin.Context) {
-	cpf := c.Param("cpf")
-	res := firebaseOperations.GetDiaryFromCpf(cpf)
-	c.IndentedJSON(http.StatusOK, res)
-}

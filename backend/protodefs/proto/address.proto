@@ -8,10 +8,12 @@ service AddressService {
 }
 
 message NewAddressRequest {
-  int64 id_person = 1;
-  string street = 2;
-  string neighborhood = 3;
-  string city = 4;
+  string city = 1;
+  string complement = 2;
+  int64 number = 3;
+  string state = 4;
+  string street = 5;
+  string user = 6;
 }
 
 message NewAddressResponse {

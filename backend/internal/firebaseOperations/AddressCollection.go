@@ -2,21 +2,20 @@ package firebaseOperations
 
 import (
 	"context"
-	"time"
 
 	"cloud.google.com/go/firestore"
-	models "github.com/Carlosabdoamaral/golang-challenge/internal/Models"
+	pb "github.com/Carlosabdoamaral/golang-challenge/protodefs/gen/proto"
 )
 
-func CreateAddress(address models.Address) {
-	client.
+func CreateAddress(address *pb.NewAddressRequest) {
+	Client.
 		Collection("address").
 		Doc(address.User).
 		Create(context.Background(), address)
 }
 
-func UpdateAddress(address models.Address) time.Time {
-	client.
+func UpdateAddress(address *pb.NewAddressRequest) {
+	Client.
 		Collection("address").
 		Doc(address.User).
 		Update(context.Background(), []firestore.Update{
@@ -26,6 +25,4 @@ func UpdateAddress(address models.Address) time.Time {
 			{Path: "State", Value: address.State},
 			{Path: "Street", Value: address.Street},
 		})
-
-	return time.Now()
 }

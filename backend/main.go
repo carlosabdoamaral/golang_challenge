@@ -23,9 +23,8 @@ func main() {
 
 	diaryGroup := v1.Group("/diary")
 	diaryGroup.POST("/new", rest.CreateDiary)
-	diaryGroup.GET("/cpf/:cpf", rest.GetDiaryFromCpf) //NOT WORKING
 
-	err := router.Run()
+	err := router.Run(":1234")
 	if err != nil {
 		return
 	}

@@ -8,9 +8,9 @@ service DiaryService {
 
 message NewDiaryRequest {
   string content = 1;
+  string cpf = 2;
 }
 
 message NewDiaryResponse {
   string status = 1;
-  repeated string historic = 2;
 }

@@ -7,7 +7,7 @@ import (
 )
 
 func CreateDiary(diary models.Diary) {
-	client.Collection("diary").NewDoc().Create(context.Background(), diary)
+	Client.Collection("diary").NewDoc().Create(context.Background(), diary)
 }
 
 func GetDiaryFromCpf(cpf string) []models.Diary {

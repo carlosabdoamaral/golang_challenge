@@ -9,7 +9,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-var client *firestore.Client = ConnectToFirestore()
+var Client *firestore.Client = ConnectToFirestore()
 
 func ConnectToFirestore() *firestore.Client {
 

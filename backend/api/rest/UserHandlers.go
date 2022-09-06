@@ -1,13 +1,13 @@
 package rest
 
 import (
+	"context"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 
-	models "github.com/Carlosabdoamaral/golang-challenge/internal/Models"
 	"github.com/Carlosabdoamaral/golang-challenge/internal/firebaseOperations"
+	pb "github.com/Carlosabdoamaral/golang-challenge/protodefs/gen/proto"
 	"github.com/gin-gonic/gin"
 )
 
@@ -18,19 +18,12 @@ func CreateUser(c *gin.Context) {
 		c.IndentedJSON(http.StatusConflict, "Something went wrong")
 	}
 
-	var userFromBody models.FullUser
+	var userFromBody *pb.CreatePersonRequest
 	json.Unmarshal([]byte(body), &userFromBody)
 
-	userExists := false
+	PersonServer.CreatePerson(context.Background(), userFromBody)
 
-	if !userExists {
-		firebaseOperations.CreateUser(userFromBody.User)
-		firebaseOperations.CreateAddress(userFromBody.Address)
-		c.IndentedJSON(http.StatusCreated, "Created!")
-	} else {
-		returnMessage := fmt.Sprintf("The user '%s' already exists", userFromBody.User.Fullname)
-		c.IndentedJSON(http.StatusConflict, returnMessage)
-	}
+	c.IndentedJSON(http.StatusCreated, "Created!")
 }
 
 func GetAllUsers(c *gin.Context) {

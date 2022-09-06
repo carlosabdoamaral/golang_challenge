@@ -9,6 +9,7 @@ service PersonService {
 message CreatePersonRequest {
   string name = 1;
   int64 age = 2;
+  string cpf = 3;
 }
 
 message CreatePersonReponse {
