@@ -1,43 +1,60 @@
-import { TopBar } from '../widgets/Topbar';
-import {partners_list, partners_title, what_is_avenue_body, what_is_avenue_title } from '../static/data/aboutData';
+import { TopBar } from "../widgets/Topbar";
+import {data} from "../static/data/data";
+import Card from "react-bootstrap/Card";
+import { useEffect } from "react";
 
-import Card from 'react-bootstrap/Card';
-import { useEffect } from 'react';
+export const AvenueHomeView = (_) => {
+  const aboutSection = data.home.aboutSection
+  const partnersSection = data.home.partnersSection
+  const knowSection = data.home.knowSection
 
-export const AvenueHomeView = _ => {
+  useEffect(() => {
+    window.document.title = "Avenue | Home";
+  });
 
-    useEffect( () => {
-        window.document.title = "Avenue | Home"
-    })
+  return (
+    <main>
+      <TopBar />
 
-    return (
-        <main>
-            <TopBar/>
+      <section className="p-5 w-75 mx-auto">
+        <div className="d-flex justify-content-between align-items-center">
+          <h2>{aboutSection.title}</h2>
+          <a href={aboutSection.linkURL} target={"_blank"}> {aboutSection.linkText} </a>
+        </div>
 
-            <section className='p-5 w-75 mx-auto'>
-                <div className="d-flex justify-content-between align-items-center">
-                    <h2>{what_is_avenue_title}</h2>
-                    <a href="https://avenue.us/" target={"_blank"}>Website</a>
-                </div>
-                <hr/>
-                <p>{what_is_avenue_body}</p>
-            </section>
+        <hr />
 
-            <section className='p-5 w-75 mx-auto'>
-                <h2>{partners_title}</h2>
-                <hr/>
-                {
-                    partners_list.map((partner, i) => (
-                        <Card className="my-2">
-                            <Card.Body>
-                                <b>{partner.title}</b>
-                                <br/>
-                                <small className='fw-light'>{partner.about}</small>
-                            </Card.Body>
-                        </Card>
-                    ))
-                }
-            </section>
-        </main>
-    )
-}
+        <p>{aboutSection.content}</p>
+      </section>
+
+      <section className="p-5 w-75 mx-auto">
+        <h2>{partnersSection.title}</h2>
+        <hr />
+        {partnersSection.content.map((partner, i) => (
+          <Card className="my-2">
+            <Card.Body>
+              <b>{partner.title}</b>
+            </Card.Body>
+          </Card>
+        ))}
+      </section>
+
+      <section className="p-5 w-75 mx-auto">
+        <h2>{knowSection.title}</h2>
+        <hr />
+        {
+          knowSection.content.map( (item, i) => (
+            <Card className="my-2">
+              <Card.Body>
+                <b>{item.title}</b>
+              </Card.Body>
+              <Card.Footer className="fw-light">
+                <small><a href="">More details</a></small>
+              </Card.Footer>
+            </Card>
+          ))
+        }
+      </section>
+    </main>
+  );
+};
