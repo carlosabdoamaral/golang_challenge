@@ -17,16 +17,9 @@ func CreateDiary(c *gin.Context) {
 		c.IndentedJSON(http.StatusConflict, "Something went wrong")
 	}
 
-	var diaryList []models.Diary
-	json.Unmarshal([]byte(body), &diaryList)
+	var diary models.Diary
+	json.Unmarshal([]byte(body), &diary)
 
-	for _, diary := range diaryList {
-		if err != nil {
-			c.IndentedJSON(http.StatusConflict, "Some error occurred while checking if user exists")
-		}
-
-		//TODO: Validar se o usuário existe
-		firebaseOperations.CreateDiary(diary)
-		c.IndentedJSON(http.StatusCreated, "Created!")
-	}
+	firebaseOperations.CreateDiary(diary)
+	c.IndentedJSON(http.StatusCreated, "Created!")
 }

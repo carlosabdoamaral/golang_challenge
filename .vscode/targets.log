@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Sep  6 14:37:30 2022
+# Make data base, printed on Mon Sep 12 09:41:30 2022
 
 # Variables
 
@@ -53,7 +53,7 @@ GDM_LANG = en
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 9:65869
+JOURNAL_STREAM = 9:69033
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -79,7 +79,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/680677324/bus
 # environment
 _ = /snap/code/106/usr/share/code/code
 # environment
-MANAGERPID = 5452
+MANAGERPID = 6120
 # environment
 GVM_PATH_BACKUP = /home/carlos.amaral@db1.com.br/.gvm/bin:/home/carlos.amaral@db1.com.br/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/carlos.amaral@db1.com.br/.local/share/JetBrains/Toolbox/scripts:/home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/.local/aws-cli/v2/2.5.6/bin:/home/carlos.amaral@db1.com.br/.local/protoc-gen-go-cli::/home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/.local/bin:/home/carlos.amaral@db1.com.br/Downloads/CLion-2022.2.1/clion-2022.2.1/bin:
 # environment
@@ -93,7 +93,7 @@ XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/106/usr/share/glib-2.0/schemas
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_680677324_p0dv1N
+KRB5CCNAME = FILE:/tmp/krb5cc_680677324_2YUvhV
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -101,7 +101,7 @@ PATH = /home/carlos.amaral@db1.com.br/.gvm/gos/go1.18/bin:/home/carlos.amaral@db
 # environment
 GPG_AGENT_INFO = /run/user/680677324/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/MGA10456.db1.com.br:@/tmp/.ICE-unix/5662,unix/MGA10456.db1.com.br:/tmp/.ICE-unix/5662
+SESSION_MANAGER = local/MGA10456.db1.com.br:@/tmp/.ICE-unix/6324,unix/MGA10456.db1.com.br:/tmp/.ICE-unix/6324
 # environment
 XDG_RUNTIME_DIR = /run/user/680677324
 # environment
@@ -121,7 +121,7 @@ CLION_PATH = /home/carlos.amaral@db1.com.br/Downloads/CLion-2022.2.1/clion-2022.
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = b31ac9bf83e54f108f7f0c2e2b2b4498
+INVOCATION_ID = 2e60f6a62d804cfa90e3f8265c7bc859
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/106/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -135,7 +135,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/680677324/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 99775
+GIO_LAUNCHED_DESKTOP_FILE_PID = 177892
 # automatic
 %F = $(notdir $%)
 # environment
@@ -151,7 +151,7 @@ PWD = /home/carlos.amaral@db1.com.br/Documents/github/personal/golang-challenge
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 5614
+SSH_AGENT_PID = 6283
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -280,10 +280,10 @@ LC_ALL = C
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
-# default
  
 make: *** No rule to make target 'all'.  Stop.
 
+# default
 SUFFIXES := 
 # environment
 SNAP_REEXEC = 
@@ -304,7 +304,7 @@ PROTOC_GEN_GO_CLI = /home/carlos.amaral@db1.com.br/.local/protoc-gen-go-cli
 # environment
 LANG = C
 # environment
-VSCODE_PID = 99839
+VSCODE_PID = 177945
 # environment
 DATASTORE_PROJECT_ID = trading-dev-201715
 # variable set hash-table stats:
@@ -316,7 +316,7 @@ DATASTORE_PROJECT_ID = trading-dev-201715
 
 # Directories
 
-# . (device 64768, inode 2885803): 10 files, no impossibilities.
+# . (device 64769, inode 2885803): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
@@ -374,6 +374,6 @@ GNUmakefile:
 # strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Tue Sep  6 14:37:30 2022
+# Finished Make data base on Mon Sep 12 09:41:30 2022
 
  

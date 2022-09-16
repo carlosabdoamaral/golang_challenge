@@ -24,24 +24,21 @@ export const ChallengeHomeView = _ => {
     //UPDATE USER MODAL
     const [showingUpdateUserModal, setShowingUpdateUserModal] = useState(false)
     const [updateUserModalError, setUpdateUserModalError] = useState("")
-    const openUpdateUserModal = cpf => {
-        setUserToUpdateCPF(cpf)
-        setShowingUpdateUserModal(true)
-    }
-    const closeUpdateUserModal = () => {
-        setShowingUpdateUserModal(false)
-    }
+    const openUpdateUserModal = cpf => { setUserToUpdateCPF(cpf); setShowingUpdateUserModal(true) }
+    const closeUpdateUserModal = () => { setShowingUpdateUserModal(false) }
+
+    //ADD NOTE USER MODAL
+    const [showingNewNoteUserModal, setShowingNewNoteUserModal] = useState(false)
+    const [newNoteUserModalError, setNewNoteModalError] = useState("")
+    const [userToCreateNote, setUserToCreateNote] = useState("")
+    const openNewNoteUserModal = cpf => { setUserToCreateNote(cpf); setShowingNewNoteUserModal(true) }
+    const closeNewNoteUserModal = () => { setShowingNewNoteUserModal(false) }
 
     //TOAST
     const [showToast, setShowToast] = useState(false)
     const [toastTitle, setToastTitle] = useState("")
     const [toastSubtitle, setToastSubtitle] = useState("")
     const [toastMessage, setToastMessage] = useState("")
-
-    useEffect(_ => { window.document.title = "Avenue | Challenge" })
-    useEffect(_ => {
-        getUsers(false)
-    }, [])
 
     const [uf, setUF] = useState("State")
     const [city, setCity] = useState("City")
@@ -100,7 +97,9 @@ export const ChallengeHomeView = _ => {
 
     const getCEP = () => {
         // https://h-apigateway.conectagov.estaleiro.serpro.gov.br/api-cep/v1/consulta/cep/60130240
-        const cep = document.getElementById(`cep`).value
+        let cep = document.getElementById(`cep`).value
+        cep = cep.replace("-", "")
+
         if (cep.length === 8) {
             axios.get(`https://viacep.com.br/ws/${cep}/json/`)
                 .then((res) => {
@@ -149,6 +148,24 @@ export const ChallengeHomeView = _ => {
         }
     }
 
+    const handleNewNoteRequest = _ => {
+        const noteContent = document.getElementById("new-note").value
+
+        axios.post(env.local.newNote, {
+            author: userToCreateNote,
+            message: noteContent,
+        })
+            .then((res) => {
+                if (res.status === 201) {
+                    getUsers()
+                    closeNewNoteUserModal()
+                }
+            })
+    }
+
+    useEffect(_ => { window.document.title = "Avenue | Challenge" })
+    useEffect(_ => { getUsers(false) }, [])
+
     return (
         <div>
             <TopBar />
@@ -180,9 +197,7 @@ export const ChallengeHomeView = _ => {
                                 </div>
 
                                 <div>
-                                    <Button variant="outline-dark" className='mx-1'>New note</Button>
-                                    <Button variant="outline-dark" className='mx-1'>All notes</Button>
-
+                                    <Button variant="outline-dark" className='mx-1' onClick={() => { openNewNoteUserModal(user.user.cpf) }}>New note</Button>
                                     <Button variant="outline-dark" className='mx-1' onClick={() => { openUpdateUserModal(user.user.cpf) }}>Update address</Button>
                                 </div>
                             </Card.Body>
@@ -363,6 +378,33 @@ export const ChallengeHomeView = _ => {
                     </Form>
 
                     <Button onClick={handleUpdateAddressRequest} variant='outline-success' className="w-100 mt-5">Update!</Button>
+                </Modal.Body>
+            </Modal>
+
+            <Modal
+                show={showingNewNoteUserModal}
+                onHide={closeNewNoteUserModal}
+                size="lg"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>New note</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="rounded my-3">
+
+                        <Form.Control type="text" placeholder="Your note..." id='new-note' />
+                        {
+                            newNoteUserModalError !== "" &&
+                            <Form.Text className="text-danger">
+                                <b>Important!</b> <br /> {newNoteUserModalError}
+                            </Form.Text>
+                        }
+                    </div>
+
+                    <div className="d-flex justify-content-end">
+                        <Button onClick={handleNewNoteRequest} variant='outline-success' className="w-25 mt-2">Post!</Button>
+                    </div>
                 </Modal.Body>
             </Modal>
         </div >
