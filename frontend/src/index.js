@@ -6,20 +6,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './static/scss/main.scss'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { AvenueReposView } from './views/AvenueReposView';
-import { AvenueHomeView} from './views/AvenueHomeView';
+import { ReposView } from './views/ReposView';
+import { HomeView} from './views/HomeView';
 
-import { ChallengeHomeView } from './views/ChallengeHomeView';
-import { ChallengeInfosView } from './views/ChallengeInfosView';
+import { ChallengeView } from './views/ChallengeView';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<AvenueHomeView/>}/>
-      <Route path="/avenue/repository" element={<AvenueReposView/>}/>
-      <Route path="/challenge/pannel" element={<ChallengeHomeView/>}/>
-      <Route path="/challenge/about" element={<ChallengeInfosView/>}/>
+      <Route path="/" element={<HomeView/>}/>
+      <Route path="/repository" element={<ReposView/>}/>
+      <Route path="/challenge" element={<ChallengeView/>}/>
     </Routes>
   </BrowserRouter>
 );

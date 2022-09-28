@@ -15,8 +15,8 @@ export const TopBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/avenue/repository">Repos</Nav.Link>
-              <Nav.Link href="/challenge/pannel">Challenge</Nav.Link>
+              <Nav.Link href="/repository">Repos</Nav.Link>
+              <Nav.Link href="/challenge">Challenge</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

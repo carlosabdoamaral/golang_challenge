@@ -3,7 +3,6 @@ package firebaseOperations
 import (
 	"context"
 	"log"
-
 	models "github.com/Carlosabdoamaral/golang-challenge/internal/Models"
 	pb "github.com/Carlosabdoamaral/golang-challenge/protodefs/gen/proto"
 	"google.golang.org/api/iterator"

@@ -20,6 +20,7 @@ func CreateUser(c *gin.Context) {
 
 	var userFromBody *pb.CreatePersonRequest
 	json.Unmarshal([]byte(body), &userFromBody)
+	
 
 	PersonServer.CreatePerson(context.Background(), userFromBody)
 

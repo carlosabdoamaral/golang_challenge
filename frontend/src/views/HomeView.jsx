@@ -3,7 +3,7 @@ import {data} from "../static/data/data";
 import Card from "react-bootstrap/Card";
 import { useEffect } from "react";
 
-export const AvenueHomeView = (_) => {
+export const HomeView = (_) => {
   const aboutSection = data.home.aboutSection
   const partnersSection = data.home.partnersSection
   const knowSection = data.home.knowSection

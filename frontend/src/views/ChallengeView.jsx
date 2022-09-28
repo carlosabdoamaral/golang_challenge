@@ -11,14 +11,14 @@ import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import Toast from "react-bootstrap/Toast"
 
-export const ChallengeHomeView = _ => {
+export const ChallengeView = _ => {
     const [dataKey, setDatakey] = useState([])
     const [userToUpdateCPF, setUserToUpdateCPF] = useState("")
 
     //CREATE USER MODAL
     const [showingNewUserModal, setShowingNewUserModal] = useState(false)
     const openNewUseModal = () => { setShowingNewUserModal(true) }
-    const closeNewUseModal = () => { setShowingNewUserModal(false) }
+    const closeNewUserModal = () => { setShowingNewUserModal(false) }
     const [createUserModalError, setCreateUserModalError] = useState("")
 
     //UPDATE USER MODAL
@@ -43,6 +43,7 @@ export const ChallengeHomeView = _ => {
     const [uf, setUF] = useState("State")
     const [city, setCity] = useState("City")
     const [address, setAddress] = useState("Address")
+
     const handleNewUserRequest = _ => {
         const firstname = document.getElementById("firstname").value
         const lastname = document.getElementById("lastname").value
@@ -52,19 +53,20 @@ export const ChallengeHomeView = _ => {
         const addressNumber = document.getElementById("addressNth").value
         const complement = document.getElementById("complement").value
 
-        if (firstname === "") { setCreateUserModalError("You must provide a first name") }
-        else if (lastname === "") { setCreateUserModalError("You must provide a last name") }
-        else if (cpf.length < 11) { setCreateUserModalError("You must provide a CPF") }
-        else if (age === "") { setCreateUserModalError("You must provide a Age") }
-        else if (cep.length < 8) { setCreateUserModalError("You must provide a CEP") }
-        else if (addressNumber === "") { setCreateUserModalError("You must provide a number") }
+        if (firstname === "") { setCreateUserModalError("You must provide a first name"); return }
+        else if (lastname === "") { setCreateUserModalError("You must provide a last name"); return }
+        else if (cpf.length < 11) { setCreateUserModalError("You must provide a CPF"); return }
+        else if (age === "") { setCreateUserModalError("You must provide a Age"); return }
+        else if (cep.length < 8) { setCreateUserModalError("You must provide a CEP"); return }
+        else if (addressNumber === "") { setCreateUserModalError("You must provide a number"); return }
         else {
             setCreateUserModalError("")
+
             const body = {
                 user: {
                     fullname: `${firstname} ${lastname}`,
-                    cpf: cpf,
-                    age: age,
+                    cpf: `${cpf}`,
+                    age: `${age}`,
                 },
 
                 address: {
@@ -80,6 +82,7 @@ export const ChallengeHomeView = _ => {
 
             axios.post(env.local.createUser, body)
                 .then((res) => {
+                    console.log(res)
                     if (res.data.toUpperCase() === "CREATED!") {
                         let date = new Date()
                         setToastTitle("Create user status")
@@ -89,7 +92,7 @@ export const ChallengeHomeView = _ => {
 
                         getUsers(false)
 
-                        closeNewUseModal()
+                        closeNewUserModal()
                     }
                 })
         }
@@ -209,7 +212,7 @@ export const ChallengeHomeView = _ => {
 
             <Modal
                 show={showingNewUserModal}
-                onHide={closeNewUseModal}
+                onHide={closeNewUserModal}
                 size="lg"
                 centered
             >

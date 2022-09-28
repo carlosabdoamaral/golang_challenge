@@ -8,7 +8,7 @@ import { TopBar } from '../widgets/Topbar';
 import { reposData } from '../static/data/reposData';
 import { useEffect } from 'react';
 
-export const AvenueReposView = _ => {
+export const ReposView = _ => {
 
     useEffect( () => {
         window.document.title = "Avenue | Repository"
@@ -55,7 +55,7 @@ export const AvenueReposView = _ => {
                                 </p>
                             </Accordion.Header>
 
-                            <Accordion.Body className="py-5">
+                            <Accordion.Body className="py-4">
                                 {
                                     r.observations.isEmpty &&
                                     <Alert variant='danger'>
@@ -78,7 +78,7 @@ export const AvenueReposView = _ => {
                                 }
 
 
-                                <div className='mt-5'>
+                                <div className='mt-1'>
                                     <h5>Notes</h5>
                                     <hr />
                                     <Card className='my-2'>
@@ -94,7 +94,7 @@ export const AvenueReposView = _ => {
                                 </div>
 
 
-                                <div className='mt-5'>
+                                {/* <div className='mt-5'>
                                     <h5>Technology</h5>
                                     <hr />
                                     <Card className="my-1">
@@ -103,7 +103,7 @@ export const AvenueReposView = _ => {
 
                                                 r.technologies.list.map((tech, k) => (
                                                     <Card.Body>
-                                                        IDK WHY I CANT GET THE TITLE!!!!!!
+                                                        <p>{tech.title}</p>
                                                     </Card.Body>
                                                 ))
 
@@ -114,7 +114,7 @@ export const AvenueReposView = _ => {
                                                 </Card.Body>
                                         }
                                     </Card>
-                                </div>
+                                </div> */}
                             </Accordion.Body>
                         </Accordion.Item>
                     ))
