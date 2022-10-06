@@ -9,11 +9,16 @@ service PersonService {
 
 message CreateFullPersonRequest {
   CreatePersonRequest user = 1;
-  NewAddressRequest address = 2; 
-  NewDiaryRequest diary = 3; 
+  Address address = 2; 
+  Diary diary = 3; 
 }
 
-message NewAddressRequest {
+message Diary {
+  string content = 1;
+  string cpf = 2;
+}
+
+message Address {
   string city = 1;
   string complement = 2;
   int64 number = 3;
@@ -22,15 +27,11 @@ message NewAddressRequest {
   string user = 6;
 }
 
+
 message CreatePersonRequest {
   string name = 1;
   int64 age = 2;
   string cpf = 3;
-}
-
-message NewDiaryRequest {
-  string content = 1;
-  string cpf = 2;
 }
 
 message CreatePersonReponse {

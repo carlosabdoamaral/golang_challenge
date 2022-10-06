@@ -19,6 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PersonServiceClient interface {
 	CreatePerson(ctx context.Context, in *CreatePersonRequest, opts ...grpc.CallOption) (*CreatePersonReponse, error)
+	CreateFullPerson(ctx context.Context, in *CreateFullPersonRequest, opts ...grpc.CallOption) (*CreatePersonReponse, error)
 }
 
 type personServiceClient struct {
@@ -38,11 +39,21 @@ func (c *personServiceClient) CreatePerson(ctx context.Context, in *CreatePerson
 	return out, nil
 }
 
+func (c *personServiceClient) CreateFullPerson(ctx context.Context, in *CreateFullPersonRequest, opts ...grpc.CallOption) (*CreatePersonReponse, error) {
+	out := new(CreatePersonReponse)
+	err := c.cc.Invoke(ctx, "/proto.PersonService/CreateFullPerson", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PersonServiceServer is the server API for PersonService service.
 // All implementations must embed UnimplementedPersonServiceServer
 // for forward compatibility
 type PersonServiceServer interface {
 	CreatePerson(context.Context, *CreatePersonRequest) (*CreatePersonReponse, error)
+	CreateFullPerson(context.Context, *CreateFullPersonRequest) (*CreatePersonReponse, error)
 	mustEmbedUnimplementedPersonServiceServer()
 }
 
@@ -52,6 +63,9 @@ type UnimplementedPersonServiceServer struct {
 
 func (UnimplementedPersonServiceServer) CreatePerson(context.Context, *CreatePersonRequest) (*CreatePersonReponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePerson not implemented")
+}
+func (UnimplementedPersonServiceServer) CreateFullPerson(context.Context, *CreateFullPersonRequest) (*CreatePersonReponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateFullPerson not implemented")
 }
 func (UnimplementedPersonServiceServer) mustEmbedUnimplementedPersonServiceServer() {}
 
@@ -84,6 +98,24 @@ func _PersonService_CreatePerson_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PersonService_CreateFullPerson_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateFullPersonRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PersonServiceServer).CreateFullPerson(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.PersonService/CreateFullPerson",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PersonServiceServer).CreateFullPerson(ctx, req.(*CreateFullPersonRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PersonService_ServiceDesc is the grpc.ServiceDesc for PersonService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -94,6 +126,10 @@ var PersonService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreatePerson",
 			Handler:    _PersonService_CreatePerson_Handler,
+		},
+		{
+			MethodName: "CreateFullPerson",
+			Handler:    _PersonService_CreateFullPerson_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
