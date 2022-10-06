@@ -18,10 +18,8 @@ func CreateUser(c *gin.Context) {
 		c.IndentedJSON(http.StatusConflict, "Something went wrong")
 	}
 
-	var userFromBody *pb.CreatePersonRequest
+	var userFromBody *pb.CreateFullPersonRequest
 	json.Unmarshal([]byte(body), &userFromBody)
-	
-
 	PersonServer.CreatePerson(context.Background(), userFromBody)
 
 	c.IndentedJSON(http.StatusCreated, "Created!")

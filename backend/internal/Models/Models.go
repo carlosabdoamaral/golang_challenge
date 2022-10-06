@@ -15,9 +15,9 @@ type Address struct {
 }
 
 type User struct {
-	Fullname string `json:"fullname,omitempty"`
-	Cpf      string `json:"cpf,omitempty"`
+	Fullname string `json:"name,omitempty"`
 	Age      int    `json:"age,omitempty"`
+	Cpf      string `json:"cpf,omitempty"`
 }
 
 type FullUser struct {

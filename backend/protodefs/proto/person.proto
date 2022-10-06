@@ -4,12 +4,33 @@ option go_package = "./proto";
 
 service PersonService {
   rpc CreatePerson(CreatePersonRequest) returns (CreatePersonReponse) {}
+  rpc CreateFullPerson(CreateFullPersonRequest) returns (CreatePersonReponse) {}
+}
+
+message CreateFullPersonRequest {
+  CreatePersonRequest user = 1;
+  NewAddressRequest address = 2; 
+  NewDiaryRequest diary = 3; 
+}
+
+message NewAddressRequest {
+  string city = 1;
+  string complement = 2;
+  int64 number = 3;
+  string state = 4;
+  string street = 5;
+  string user = 6;
 }
 
 message CreatePersonRequest {
   string name = 1;
   int64 age = 2;
   string cpf = 3;
+}
+
+message NewDiaryRequest {
+  string content = 1;
+  string cpf = 2;
 }
 
 message CreatePersonReponse {

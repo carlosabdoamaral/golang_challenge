@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"context"
 	"flag"
 	"log"
@@ -44,6 +43,7 @@ func main() {
 }
 
 func (s *person_server) CreatePerson(c context.Context, req *pb.CreatePersonRequest) (*pb.CreatePersonReponse, error) {
+	log.Println("CREATE PERSON RECEIVED")
 	firebaseOperations.ConnectToFirestore()
 	firebaseOperations.CreateUser(req)
 	return &pb.CreatePersonReponse{
@@ -52,6 +52,7 @@ func (s *person_server) CreatePerson(c context.Context, req *pb.CreatePersonRequ
 }
 
 func (s *address_server) CreateAddress(c context.Context, req *pb.NewAddressRequest) (*pb.NewAddressResponse, error) {
+	log.Println("CREATE ADDRESS RECEIVED")
 	firebaseOperations.CreateAddress(req)
 
 	return &pb.NewAddressResponse{
@@ -60,8 +61,9 @@ func (s *address_server) CreateAddress(c context.Context, req *pb.NewAddressRequ
 }
 
 func (s *address_server) UpdateAddress(c context.Context, req *pb.NewAddressRequest) (*pb.NewAddressResponse, error) {
+	log.Println("UPDATE ADDRESS RECEIVED")
 	firebaseOperations.UpdateAddress(req)
-	
+
 	return &pb.NewAddressResponse{
 		Status: "OK",
 	}, nil
